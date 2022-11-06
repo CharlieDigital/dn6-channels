@@ -27,34 +27,34 @@ public class Scheduler {
   /// <summary>
   /// The main method for our scehduler.
   /// </summary>
-  public async Task Process() {
-    while (await _reader.WaitToReadAsync()) {
-      if (_reader.TryRead(out var calendarEvent)) {
-        var start = calendarEvent.StartTime.ToUnixTimeSeconds();
-        var end = calendarEvent.EndTime.ToUnixTimeSeconds();
+public async Task Process() {
+  while (await _reader.WaitToReadAsync()) {
+    if (_reader.TryRead(out var calendarEvent)) {
+      var start = calendarEvent.StartTime.ToUnixTimeSeconds();
+      var end = calendarEvent.EndTime.ToUnixTimeSeconds();
 
-        // Add the event to the tree
-        _schedule.Add(
-          start,
-          end,
-          calendarEvent);
+      // Add the event to the tree
+      _schedule.Add(
+        start,
+        end,
+        calendarEvent);
 
-        // Query to see if we have a conflict
-        var events = _schedule.Query(start, end);
+      // Query to see if we have a conflict
+      var events = _schedule.Query(start, end);
 
-        if (events.Count() > 1) {
-          var buffer = new StringBuilder();
-          buffer.AppendLine("[CONFLICT]");
+      if (events.Count() > 1) {
+        var buffer = new StringBuilder();
+        buffer.AppendLine("[CONFLICT]");
 
-          events.Aggregate(buffer, (buffer, e) => {
-            buffer.AppendFormat($"  {e.StartTime:yyyy-MM-dd HH:mm} - {e.EndTime:yyyy-MM-dd HH:mm}: {e.Title}");
-            buffer.Append(Environment.NewLine);
-            return buffer;
-          });
+        events.Aggregate(buffer, (buffer, e) => {
+          buffer.AppendFormat($"  {e.StartTime:yyyy-MM-dd HH:mm} - {e.EndTime:yyyy-MM-dd HH:mm}: {e.Title}");
+          buffer.Append(Environment.NewLine);
+          return buffer;
+        });
 
-          Console.WriteLine($"{buffer.ToString()}--------");
-        }
+        Console.WriteLine($"{buffer.ToString()}--------");
       }
     }
   }
+}
 }
