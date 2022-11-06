@@ -7,7 +7,7 @@ If you're building apps that process large volumes of data or needs to interact 
 Let's take a look at how we can use channels in C# 10 with dotnet 6.
 ## The Use Case
 
-To start with, imagine that we are building a calender reconciliation application.  A user as two or more calendars (such as Google, Outlook, and iCloud Calendar) that we'd like to read from and find conflicting events.
+To start with, imagine that we are building a calendar reconciliation application.  A user as two or more calendars (such as Google, Outlook, and iCloud Calendar) that we'd like to read from and find conflicting events.
 
 One way to do this is to simply loop over each calendar and collect all of the events:
 
@@ -149,7 +149,7 @@ await schedulerTask;
 
 ## The Output
 
-In our exzample, we'll get the following output:
+In our example, we'll get the following output:
 
 ```
 [CONFLICT]
@@ -220,7 +220,7 @@ As we get events, we just write them to the channel using the writer end.
 
 This is the side that _reads_ from the channel.  In this case, as our calendar event providers make API calls and return results and write them to the channel, we're going to use the `Scheduler` to read from the channel and check for conflicts.
 
-It is also suprisingly simple:
+It is also surprisingly simple:
 
 ```csharp
 public async Task Process() {
