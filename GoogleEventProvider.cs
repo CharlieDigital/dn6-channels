@@ -1,4 +1,5 @@
 using System.Threading.Channels;
+
 /// <summary>
 /// A mock provider of events from Google.
 /// </summary>

@@ -1,4 +1,5 @@
 using System.Threading.Channels;
+
 /// <summary>
 /// A mock provider of events from Apple iCloud.
 /// </summary>
@@ -11,6 +12,7 @@ public class AppleEventProvider : EventProviderBase {
 
   protected override IEnumerable<CalendarEvent>[] Events
     => _events;
+
   /// <summary>
   /// Simulates iCloud event source.
   /// </summary>

@@ -27,7 +27,7 @@ var appleCalendarTask = Task.Run(async () =>
 var stopwatch = new Stopwatch();
 stopwatch.Start();
 
-// Now start our tasks and run concurrently.
+// Now start our tasks execute and complete concurrently.
 await Task.WhenAll(
   googleCalendarTask,
   outlookCalendarTask,
