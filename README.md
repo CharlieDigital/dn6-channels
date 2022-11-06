@@ -32,11 +32,11 @@ while (has_more_icloud_events)) {
 
 We can use the [`intervalTree`](https://github.com/mbuchetics/RangeTree) as a mechanism to represent the events as intervals so we can easily query to see where we have conflicts.
 
-The problem with this approach is that each of the API calls retrieve the events from the providers is I/O bound; in other words, most of the time is going to be spent on the network making the API call and doing this sequentially means that our code has to spend a lot of time waiting on the network.
+The problem with this approach is that each of the API calls to retrieve the events from the providers is I/O bound; in other words, most of the time is going to be spent on the network making the API call and doing this sequentially means that our code has to spend a lot of time waiting on the network.
 
 If the calls take on average `[3s, 4s, 3s]`, then the total time to process this operation sequentially is 10s.  But if we could do this concurrently, we could process each operation in 4s instead.
 
-Why does this matter?  In a serverless world, you're often billed by a compute/time metric.  So if you can perform the same task in less time -- especially I/O bound task which don't put pressure on the CPU -- you can save operating costs.
+Why does this matter?  In a serverless world, you're often billed by a compute/time metric.  So if you can perform the same task in less time -- especially I/O bound tasks which don't put pressure on the CPU -- you can save operating costs.
 
 ## Our Base Code
 
