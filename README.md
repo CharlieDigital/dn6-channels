@@ -16,17 +16,17 @@ One way to do this is to simply loop over each calendar and collect all of the e
 # Pseudo code:
 
 // Use an interval tree to hold our events
-var intervalTree = new IntervalTree()
+var interval_tree = new IntervalTree()
 
-foreach (event in google) {
+while (has_more_google_events) {
   // API calls to get the google events; 3s
 }
 
-foreach (event in outlook) {
+while (has_more_outlook_events) {
   // API calls to get the outlook events; 4s
 }
 
-foreach (event in iCloud) {
+while (has_more_icloud_events)) {
   // API calls to get the iCloud events; 3s
 }
 ```
@@ -200,10 +200,11 @@ public async Task RunAsync() {
   CalendarEvent[] events;
 
   do {
+    // Get next page of events.
     events = (await GetCalendarEventsAsync()).ToArray();
 
     if (events.Length == 0) {
-      break;
+      break; // No more pages; we got eerything.
     }
 
     foreach(var e in events) {
