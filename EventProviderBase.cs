@@ -75,7 +75,6 @@ public abstract class EventProviderBase {
       foreach(var e in events) {
         await _writer.WriteAsync(e);
       }
-
-  } while (true);
+    } while (true);
   }
 }

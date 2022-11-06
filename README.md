@@ -1,6 +1,6 @@
 # Using Channels in dotnet 6 with C# 10
 
-Channels are a construct that similifies concurrent execution and pipelining of data without the use of lock based algorithms.
+Channels are a construct that simplifies concurrent execution and pipelining of data without the use of lock based algorithms.
 
 If you're building apps that process large volumes of data or needs to interact with multiple APIs for some processing job, using channels can improve the overall performance of the application by allowing you to partition the data processing or execute those API calls concurrently while aggregating the results and/or performing post processing as a stream.
 
@@ -40,7 +40,7 @@ Why does this matter?  In a serverless world, you're often billed by a compute/t
 
 ## Our Base Code
 
-To simulate this, we're going to create a set of simple mock providers that are going to mock API calls that return sets of events from Google Calendar, Outlook, and Apple iCloud Calendar (we aren't going to actaully make remote calls, we'll just pretend that we make the call and get back sets of events from each endpoint).
+To simulate this, we're going to create a set of simple mock providers that are going to mock API calls that return sets of events from Google Calendar, Outlook, and Apple iCloud Calendar (we aren't going to actually make remote calls, we'll just pretend that we make the call and get back sets of events from each endpoint).
 
 ```csharp
 public async Task<IEnumerable<CalendarEvent>> GetCalendarEventsAsync() {

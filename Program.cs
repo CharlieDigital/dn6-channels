@@ -32,9 +32,7 @@ await Task.WhenAll(
   googleCalendarTask,
   outlookCalendarTask,
   appleCalendarTask
-).ContinueWith(
-  _ => writer.Complete()
-);
+).ContinueWith( _ => writer.Complete() );
 
 stopwatch.Stop();
 
