@@ -203,7 +203,7 @@ public async Task RunAsync() {
     events = (await GetCalendarEventsAsync()).ToArray();
 
     if (events.Length == 0) {
-      break; // No more pages; we got eerything.
+      break; // No more pages; we got everything.
     }
 
     foreach(var e in events) {
@@ -234,7 +234,7 @@ public async Task Process() {
 
       _schedule.Add(start, end, calendarEvent);
 
-      // Noq query the tree to see if we have a conflict
+      // Now query the tree to see if we have a conflict
       var events = _schedule.Query(start, end);
 
       if (events.Count() > 1) {

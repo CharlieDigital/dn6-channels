@@ -7,8 +7,7 @@ var reader = channel.Reader;
 var writer = channel.Writer;
 
 // Start our scheduler.
-var scheduler = new Scheduler(reader);
-var schedulerTask = scheduler.Process();
+var schedulerTask = new Scheduler(reader).ProcessAsync();
 
 // Create our calendar retrieval tasks.
 var googleCalendarTask = Task.Run(async () =>

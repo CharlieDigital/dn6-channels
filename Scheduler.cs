@@ -30,7 +30,7 @@ public class Scheduler {
   /// <summary>
   /// The main method for our scehduler.
   /// </summary>
-  public async Task Process() {
+  public async Task ProcessAsync() {
     while (await _reader.WaitToReadAsync()) {
       if (_reader.TryRead(out var calendarEvent)) {
         var start = calendarEvent.StartTime.ToUnixTimeSeconds();
